@@ -1,0 +1,65 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>简易笔记程序</title>
+  <script type="module" src="/main.js" defer></script>
+</head>
+
+<body>
+  <main class="container">
+
+    <!-- 笔记内容区域，分为左右两栏 -->
+    <div class="notes-layout">
+      <!-- 左侧笔记列表 -->
+      <div class="notes-sidebar">
+        <div class="sidebar-header">
+          <div class="header-top">
+            <h2>笔记列表</h2>
+            <button id="new-note-btn" class="icon-btn" title="新建笔记">+</button>
+          </div>
+          <!-- 排序按钮移动到标题下方 -->
+          <div class="sort-buttons">
+            <button id="sort-title" class="sort-btn" title="按名称排序">名称排序</button>
+            <button id="sort-updated" class="sort-btn" title="按最近更新排序">最近更新</button>
+            <button id="sort-created" class="sort-btn" title="按创建时间排序">最新创建</button>
+          </div>
+        </div>
+        <ul id="notes-list"></ul>
+      </div>
+
+      <!-- 右侧笔记详情 -->
+      <div class="notes-detail">
+        <div id="note-detail-placeholder">
+          <p>点击按钮新建一个笔记</p>
+        </div>
+        <div id="note-detail" style="display: none;">
+          <div class="detail-header">
+            <h2 id="detail-title"></h2>
+            <div class="detail-actions">
+              <button id="edit-btn" class="icon-btn" title="编辑">✏️</button>
+              <button id="delete-btn" class="icon-btn" title="删除">×</button>
+            </div>
+          </div>
+          <div id="detail-content" class="detail-content"></div>
+          <div class="detail-footer">
+            <div class="time-info">
+              <small id="detail-created-at"></small>
+              <small id="title-length-hint" style="display: none; color: #666; margin-left: 10px;"></small>
+            </div>
+            <div class="time-info">
+              <small id="detail-updated-at"></small>
+              <small id="content-length-hint" style="display: none; color: #666; margin-left: 10px;"></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

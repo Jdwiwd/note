@@ -1,0 +1,332 @@
+/* styles.css */
+/* 添加以下新样式 */
+.notes-layout {
+  display: flex;
+  width: 100%;
+  margin-top: 1.5rem;
+  gap: 1.5rem;
+  height: 90vh;
+  /* 保持整体高度比例为视窗高度的90% */
+}
+
+.notes-sidebar {
+  flex: 0 0 40%;
+  /* 左侧固定40%宽度 */
+  border-right: 1px solid #ddd;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.notes-detail {
+  flex: 1;
+  padding: 0 1rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  /* 改为垂直布局 */
+  margin-bottom: 1rem;
+}
+
+/* 添加新的header-top样式 */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  /* 添加下边距 */
+}
+
+.sort-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  /* 添加上边距 */
+}
+
+.sort-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.sort-btn::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.25rem;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+
+.sort-btn.asc::after {
+  border-top: 4px solid #333;
+}
+
+.sort-btn.desc::after {
+  border-bottom: 4px solid #333;
+}
+
+#notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.note-list-item {
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 4px solid transparent;
+}
+
+.note-list-item:hover {
+  background: #f0f0f0;
+}
+
+.note-list-item.active {
+  background: #e3f2fd;
+  border-left: 4px solid #2196F3;
+}
+
+/* 为笔记标题添加长度限制 */
+.note-list-title {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  /* 添加以下样式限制标题长度 */
+  max-width: 40%;
+  /* 确保不超过父容器宽度 */
+  overflow: hidden;
+  /* 隐藏超出部分 */
+  text-overflow: ellipsis;
+  /* 超出显示省略号 */
+  white-space: nowrap;
+  /* 禁止换行 */
+}
+
+.note-list-preview {
+  color: #666;
+  font-size: 0.9rem;
+  /* 为预览文本添加长度限制 */
+  max-width: 40%;
+  /* 确保不超过父容器宽度 */
+  overflow: hidden;
+  /* 隐藏超出部分 */
+  text-overflow: ellipsis;
+  /* 超出显示省略号 */
+  white-space: nowrap;
+  /* 禁止换行 */
+}
+
+.note-list-date {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 0.25rem;
+}
+
+#note-detail-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #888;
+  font-style: italic;
+  text-align: center;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.detail-header h2 {
+  margin: 0;
+  flex: 1;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* 更新右侧笔记内容区域样式，添加自动换行 */
+.detail-content {
+  line-height: 1.6;
+  white-space: pre-wrap;
+  /* 保留空白符序列但正常换行 */
+  word-wrap: break-word;
+  /* 允许长单词或URL换行 */
+  overflow-wrap: break-word;
+  /* 更现代的断词方式 */
+  min-height: 200px;
+  max-width: 100%;
+  /* 确保内容不超出容器 */
+}
+
+.detail-footer {
+  display: flex;
+  /* 添加flex布局 */
+  flex-direction: column;
+  /* 垂直排列 */
+  align-items: flex-start;
+  /* 左对齐 */
+  margin-top: 2rem;
+  color: #666;
+  font-size: 0.85rem;
+  gap: 0.25rem;
+  /* 添加间距 */
+}
+
+.time-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.icon-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+#new-note-btn {
+  background: #4CAF50;
+  color: white;
+  font-size: 1.5rem;
+  width: 36px;
+  height: 36px;
+}
+
+#new-note-btn:hover {
+  background: #45a049;
+}
+
+/* 添加编辑框样式 */
+.edit-textarea {
+  width: 90%;
+  height: 300px;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* 添加标题编辑框样式 */
+.edit-title-input {
+  width: 90%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .notes-sidebar {
+    border-color: #444;
+  }
+
+  .sort-btn {
+    border-color: #444;
+  }
+
+  .sort-btn::after {
+    border-top-color: #ddd;
+    border-bottom-color: #ddd;
+  }
+
+  .note-list-item {
+    background: #2d2d2d;
+  }
+
+  .note-list-item:hover {
+    background: #333;
+  }
+
+  .note-list-item.active {
+    background: #1c3d5a;
+  }
+
+  .note-list-preview {
+    color: #aaa;
+  }
+
+  .note-list-date {
+    color: #777;
+  }
+
+  #note-detail-placeholder {
+    color: #aaa;
+  }
+
+  .detail-header {
+    border-color: #444;
+  }
+
+  .detail-footer {
+    color: #aaa;
+  }
+
+  .icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .edit-textarea {
+    background-color: #333;
+    color: #eee;
+    border-color: #555;
+  }
+
+  .edit-title-input {
+    background-color: #333;
+    color: #eee;
+    border-color: #555;
+  }
+
+  /* 暗色模式下的字数提示 */
+  #title-length-hint,
+  #content-length-hint {
+    color: #aaa;
+  }
+
+  #title-length-hint[style*="color: #e53935"] {
+    color: #ff5252 !important;
+  }
+}
