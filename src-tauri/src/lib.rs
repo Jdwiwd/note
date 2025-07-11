@@ -7,6 +7,7 @@ use tauri::{App, Manager, State};
 
 static MIGRATOR: Migrator = sqlx::migrate!();
 
+// 初始化数据库连接并运行迁移
 async fn setup_db(app: &App) -> sqlx::Result<AppState> {
     let mut path: PathBuf = app.path().app_data_dir().expect("failed to get data_dir");
     std::fs::create_dir_all(&path).expect("failed to create app data dir");
@@ -21,6 +22,7 @@ async fn setup_db(app: &App) -> sqlx::Result<AppState> {
     Ok(AppState::new(db))
 }
 
+// 前端命令：添加新笔记
 #[tauri::command]
 async fn add_note(
     title: String,
@@ -33,11 +35,13 @@ async fn add_note(
         .map_err(|e| e.to_string())
 }
 
+// 前端命令：获取所有笔记
 #[tauri::command]
 async fn get_all_notes(state: State<'_, AppState>) -> Result<Vec<Note>, String> {
     state.get_all_notes().await.map_err(|e| e.to_string())
 }
 
+// 前端命令：更新笔记内容
 #[tauri::command]
 async fn update_note(
     id: String,
@@ -51,11 +55,13 @@ async fn update_note(
         .map_err(|e| e.to_string())
 }
 
+// 前端命令：删除指定笔记
 #[tauri::command]
 async fn delete_note(id: String, state: State<'_, AppState>) -> Result<bool, String> {
     state.delete_note(&id).await.map_err(|e| e.to_string())
 }
 
+// Tauri应用入口函数
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
